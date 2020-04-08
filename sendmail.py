@@ -27,7 +27,7 @@ def main():
             creds.refresh(Request())
         else:
             flow = InstalledAppFlow.from_client_secrets_file(
-                'credentials.json', SCOPES)
+                'credentials/credentials.json', SCOPES)
             creds = flow.run_local_server(port=0)
         # Save the credentials for the next run
         with open('token.pickle', 'wb') as token:
@@ -36,8 +36,8 @@ def main():
     if os.path.exists('token.pickle'):
         with open('token.pickle', 'rb') as token:
             creds = pickle.load(token)
-    for i in range(100):
-        message =  create_message('me', 'EMAIL_HERE@gmail.com','THIS IS THE POWER OF CODING U SHOULDA BEEN A CS MAJOR', ':))')
+    for i in range(50):
+        message =  create_message('me', 'GMAILHERE@gmail.com','oh hei', 'hows it goin')
         send_message(service, "me", message)
 def send_message(service, user_id, message):
     message = (service.users().messages().send(userId=user_id, body=message).execute())
